@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
 
   match '*path', to: 'pages#index' , via: [:get]
+  root 'pages#index'
 
 end

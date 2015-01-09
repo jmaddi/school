@@ -1,6 +1,7 @@
 class Api::StudentsController < ApplicationController
   def index
-    response = HTTParty.get('https://s3-ap-southeast-2.amazonaws.com/teremstudents/students.json')
+    url = Rails.configuration.external_student_url
+    response = HTTParty.get(url)
     render json: JSON.parse(response.body)['Students']
   end
 end

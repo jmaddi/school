@@ -30,5 +30,11 @@ module School
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.generators do |g|
+      g.factory_girl false
+    end
+
+    config.external_student_url = 'https://s3-ap-southeast-2.amazonaws.com/teremstudents/students.json'
   end
 end
