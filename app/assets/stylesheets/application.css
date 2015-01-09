@@ -12,6 +12,7 @@
  *
  *= require normalize
  *= require skeleton
+ *= require pickadate
  *= require_tree .
  *= require_self
  */
@@ -35,4 +36,16 @@ body {
   height: 30px;
   line-height: 30px;
   margin-bottom:0;
+}
+
+input[type="number"] {
+  height: 38px;
+  line-height: 38px;
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  padding-left: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
