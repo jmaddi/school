@@ -15,7 +15,7 @@
       <td><a href="/courses/{{ course.id }}">{{ course.code }}</a></td>
       <td>{{ course.name }}</td>
       <td>{{ course.start_date }}</td>
-      <td>{{ course.max_enrollments }}</td>
+      <td>{{ course.total_enrollments }} / {{ course.max_enrollments }}</td>
       <td>
         <button class="u-pull-right button button-destroy" ng-click="destroyCourse(course.id)">
           <i class="fa fa-trash"></i> Delete

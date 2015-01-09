@@ -3,13 +3,17 @@ class Api::CoursesController < ApplicationController
 
   def index
     @courses = Course.all
-    render json: @courses
+    render json: @courses.to_json(methods: [ :total_enrollments ])
   end
 
   def create
     @course = Course.new(course_params)
     @course.save
-    render json: @course
+    if @course.save
+      render json: @course
+    else
+      render json: { errors: @course.errors.full_messages }, status: 422
+    end
   end
 
   def show

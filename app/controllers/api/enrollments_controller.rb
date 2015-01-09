@@ -9,8 +9,11 @@ class Api::EnrollmentsController < ApplicationController
 
   def create
     @enrollment = Enrollment.new(enrollment_params)
-    @enrollment.save
-    render json: @enrollment
+    if @enrollment.save
+      render json: @enrollment
+    else
+      render json: { errors: @enrollment.errors.full_messages }, status: 422
+    end
   end
 
   def destroy

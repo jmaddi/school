@@ -1,4 +1,4 @@
-var enrollementApp = angular.module('enrollmentApp', ['ngRoute', 'ngResource', 'angular-datepicker']);
+var enrollementApp = angular.module('enrollmentApp', ['ngRoute', 'ngResource', 'ngAnimate', 'angular-datepicker']);
 
 enrollementApp.config(function($routeProvider, $httpProvider, $locationProvider) {
   authToken = $("meta[name=\"csrf-token\"]").attr("content");

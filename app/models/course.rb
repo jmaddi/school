@@ -5,4 +5,8 @@ class Course < ActiveRecord::Base
   validates :code, uniqueness: true
 
   validates :max_enrollments, numericality: { greater_than_or_equal_to: 0 }
+
+  def total_enrollments
+    enrollments.count
+  end
 end
