@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109003128) do
+ActiveRecord::Schema.define(version: 20150109034846) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
     t.date     "start_date"
-    t.integer  "max_enrollements"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "max_enrollments"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "enrollments", force: :cascade do |t|

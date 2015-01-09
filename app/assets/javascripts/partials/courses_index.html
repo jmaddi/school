@@ -7,23 +7,20 @@
       <th>Class Name</th>
       <th>Starting Date</th>
       <th># of Students</th>
-      <th>Actions</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>CS201</td>
-      <td>Software Architecture and Design Patterns</td>
-      <td>12/12/2014</td>
-      <td># of Students</td>
-      <td><a>Delete</a></td>
-    </tr>
-    <tr>
-      <td>CS201</td>
-      <td>Software Architecture and Design Patterns</td>
-      <td>12/12/2014</td>
-      <td># of Students</td>
-      <td><a>Delete</a></td>
+    <tr ng-repeat="course in courses">
+      <td><a href="/courses/{{ course.id }}">{{ course.code }}</a></td>
+      <td>{{ course.name }}</td>
+      <td>{{ course.start_date }}</td>
+      <td>{{ course.max_enrollments }}</td>
+      <td>
+        <button class="u-pull-right button button-destroy" ng-click="destroyCourse(course.id)">
+          <i class="fa fa-trash"></i> Delete
+        </a>
+      </td>  
     </tr>
   </tbody>
 </table>
@@ -31,24 +28,24 @@
 <div class="well">
     <div class="two columns">
       <label for="courseCode">Class ID</label>
-      <input type="text" class="u-full-width" />
+      <input ng-model="course.code" type="text" class="u-full-width" />
     </div>
     <div class="five columns">
       <label for="courseCode">Class Name</label>
-      <input type="text" class="u-full-width" />
+      <input ng-model="course.name" type="text" class="u-full-width" />
     </div>
     <div class="two columns">
       <label for="courseCode">Max Students</label>
-      <input type="number" class="u-full-width" />
+      <input ng-model="course.max_enrollments" type="number" class="u-full-width" />
     </div>
     <div class="three columns">
       <label for="courseCode">Starting Date</label>
-      <input type="text" class="u-full-width" />
+      <input ng-model="course.start_date" type="text" class="u-full-width" />
     </div>
 
     <div class="u-cf"></div>
 
-    <button class="button-primary u-pull-right">Add Class</button>
+    <button ng-click="addCourse()" class="button-primary u-pull-right">Add Class</button>
 
     <div class="u-cf"></div>
 </div>

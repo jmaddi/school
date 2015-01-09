@@ -1,32 +1,22 @@
 angular.module('enrollmentApp').controller('Course.index', function($scope, $resource, Course) {
 
   $scope.loadCourses = function() {
-    Course.index({}, function(data) {
-      console.debug(data);
+    Course.query({}, function(data) {
       $scope.courses = data;
     });
   }
 
-  $scope.removeEmployee = function(id) {
-    Course.destroy(id).success(function() {
-      _.remove($scope.employees, function(e) { return e.id === id; });
+  $scope.destroyCourse = function(id) {
+    Course.remove({ id: id }, function(data) {
+      _.remove($scope.courses, function(c) { return c.id === id; });
     });
   };
 
-  $scope.addEmployee = function() {
-    Employee.createEmployee({
-      employee: {
-        name: $scope.name,
-        email: $scope.email,
-        password: $scope.password,
-        password_confirmation: $scope.password,
-      }
-    }).success(function(data) {
-      $scope.name     = '';
-      $scope.email    = '';
-      $scope.password = '';
+  $scope.addCourse = function() {
+    Course.save($scope.course, function(data) {
+      $scope.course = { code: '', name: '', max_enrollments: 0, start_date: ''};
 
-      $scope.employees.push(data);
+      $scope.courses.push(data);
     });
   }
 

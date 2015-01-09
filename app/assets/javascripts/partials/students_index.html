@@ -6,15 +6,19 @@
       <th>Student ID</th>
       <th>Name</th>
       <th>Enrolled Class</th>
-      <th>Actions</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>JP0001</td>
-      <td>Jimmy Page</td>
-      <td><a>Software Architecture and Design Patterns</a></td>
-      <td><a>Delete</a></td>
+    <tr ng-repeat="enrollment in enrollments">
+      <td>{{ enrollment.student_id }}</td>
+      <td>{{ enrollment.student_id | studentIdToName: students }}</td>
+      <td><a>{{ enrollment.course_id | courseIdToName: courses }}</a></td>
+      <td>
+        <button class="u-pull-right button button-destroy" ng-click="destroyEnrollment(enrollment.id)">
+          <i class="fa fa-trash"></i> Delete
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -22,19 +26,19 @@
 <div class="row well">
     <div class="five columns">
       <label for="courseCode">Student</label>
-      <select class="u-full-width">
-        <option>Hello</option>
+      <select class="u-full-width" ng-model="enrollment.student_id">
+        <option ng-repeat="student in students" value="{{ student.id }}">{{ student.id }} - {{ student.name}}</option>
       </select>
     </div>
     <div class="five columns">
       <label for="courseCode">Class</label>
-      <select class="u-full-width">
-        <option>Hello</option>
+      <select class="u-full-width" ng-model="enrollment.course_id">
+        <option ng-repeat="course in courses" value="{{ course.id }}">{{ course.name }}</option>
       </select>
     </div>
 
     <div class="two columns">
       <br />
-      <button class="button-primary u-full-width">Enroll</button>
+      <button class="button-primary u-full-width" ng-click="addEnrollment()">Enroll</button>
     </div>
 </div>
