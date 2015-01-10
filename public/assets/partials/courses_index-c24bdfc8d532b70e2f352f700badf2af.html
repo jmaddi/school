@@ -1,0 +1,52 @@
+<h3>Courses</h3>
+
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Class ID</th>
+      <th>Class Name</th>
+      <th>Starting Date</th>
+      <th># of Students</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="course in courses">
+      <td><a href="/courses/{{ course.id }}">{{ course.code }}</a></td>
+      <td>{{ course.name }}</td>
+      <td>{{ course.start_date }}</td>
+      <td>{{ course.total_enrollments }} / {{ course.max_enrollments }}</td>
+      <td>
+        <button class="u-pull-right button button-destroy" ng-click="destroyCourse(course.id)">
+          <i class="fa fa-trash"></i> Delete
+        </a>
+      </td>  
+    </tr>
+  </tbody>
+</table>
+
+<form class="row well" ng-submit="form.$valid && addCourse()" name="form">
+    <div class="two columns">
+      <label for="courseCode">Class ID</label>
+      <input ng-model="course.code" type="text" class="u-full-width" required />
+    </div>
+    <div class="three columns">
+      <label for="courseCode">Class Name</label>
+      <input ng-model="course.name" type="text" class="u-full-width" required />
+    </div>
+    <div class="two columns">
+      <label for="courseCode">Max Students</label>
+      <input ng-model="course.max_enrollments" type="number" class="u-full-width" required />
+    </div>
+    <div class="three columns">
+      <label for="courseCode">Starting Date</label>
+      <input placeholder="YYYY-MM-DD" ng-model="course.start_date" type="text" class="u-full-width" name="start_date" required ng-pattern="/\d/" />
+      <small ng-show="form.start_date.$error.pattern">Must be YYYY-MM-DD</small>
+    </div>
+
+    <div class="two columns">
+      <br />
+      <input type="submit" class="button-primary u-full-width" value="Add" />
+    </div>
+
+</form>
