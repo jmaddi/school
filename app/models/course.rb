@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  has_many :enrollments
+  has_many :enrollments, dependent: :destroy
 
   validates :name, :code, :start_date, :max_enrollments, presence: true
   validates :code, uniqueness: true

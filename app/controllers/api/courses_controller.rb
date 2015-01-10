@@ -10,7 +10,7 @@ class Api::CoursesController < ApplicationController
     @course = Course.new(course_params)
     @course.save
     if @course.save
-      render json: @course
+      render json: @course.to_json(methods: [ :total_enrollments ])
     else
       render json: { errors: @course.errors.full_messages }, status: 422
     end

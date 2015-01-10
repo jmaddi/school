@@ -22,4 +22,11 @@ RSpec.describe Course, :type => :model do
     duplicate = build(:course, code: 'CS101')
     expect(duplicate.valid?).to be false
   end
+  it 'should delete enrollments on destroy' do
+    course = create(:course)
+    3.times { create(:enrollment, course: course) }
+    expect(Enrollment.count).to be 3
+    course.destroy
+    expect(Enrollment.count).to be 0
+  end
 end

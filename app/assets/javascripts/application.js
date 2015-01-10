@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require angular-datepicker
 //= require enrollment
+//= require jquery.noty
 //= require_tree .

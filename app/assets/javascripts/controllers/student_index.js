@@ -1,4 +1,4 @@
-angular.module('enrollmentApp').controller('Student.index', function($scope, Student, Course, Enrollment) {
+angular.module('enrollmentApp').controller('Student.index', function($scope, Student, Course, Enrollment, $window) {
 
   $scope.loadStudents = function() {
     Student.query(function(data) {
@@ -21,13 +21,20 @@ angular.module('enrollmentApp').controller('Student.index', function($scope, Stu
   $scope.addEnrollment = function() {
     Enrollment.save($scope.enrollment, function(data) {
       $scope.enrollments.push(data);
+    }, function(error) {
+      _.each(error.data.errors, function(e) {
+        noty({text: e, theme: 'relax', layout: 'topCenter', type: 'error', timeout: 3000});
+      });
     });
   }
 
   $scope.destroyEnrollment = function(id) {
-    Enrollment.remove({ id: id }, function(data) {
-      _.remove($scope.enrollments, function(e) { return e.id == id });
-    });
+    var confirmed = $window.confirm('Are you sure?');
+    if (confirmed) {
+      Enrollment.remove({ id: id }, function(data) {
+        _.remove($scope.enrollments, function(e) { return e.id == id });
+      });
+    }
   }
 
   $scope.loadStudents();

@@ -23,13 +23,13 @@
   </tbody>
 </table>
 
-<div class="row well">
+<form class="row well" name="form" ng-submit="form.$valid && addStudent()" >
   <div class="five columns">
     <input type="hidden" value="{{ course.id }}" ng-model="enrollment.course_id" />
-    <select class="u-full-width" ng-model="enrollment.student_id" ng-options="student.id as (student.id + ' - ' + student.name) for student in students">
+    <select class="u-full-width" ng-model="enrollment.student_id" ng-options="student.id as (student.id + ' - ' + student.name) for student in students" required>
     </select>
   </div>
   <div class="two columns">
-    <button class="button-primary" ng-click="addStudent()">Enroll</button>
+    <input type="submit" class="button-primary" value="Enroll" />
   </div>
-</div>
+</form>

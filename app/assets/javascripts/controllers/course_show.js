@@ -1,4 +1,4 @@
-angular.module('enrollmentApp').controller('Course.show', function($scope, Student, Course, Enrollment, $routeParams) {
+angular.module('enrollmentApp').controller('Course.show', function($scope, Student, Course, Enrollment, $routeParams, $window) {
 
   $scope.enrollment = { course_id: $routeParams.id };
 
@@ -21,14 +21,21 @@ angular.module('enrollmentApp').controller('Course.show', function($scope, Stude
   }
 
   $scope.destroyEnrollment = function(id) {
-    Enrollment.remove({ id: id }, function(data) {
-      _.remove($scope.enrollments, function(e) { return e.id == id });
-    });
+    var confirmed = $window.confirm('Are you sure?');
+    if (confirmed) {
+      Enrollment.remove({ id: id }, function(data) {
+        _.remove($scope.enrollments, function(e) { return e.id == id });
+      });
+    }
   }
 
   $scope.addStudent = function() {
     Enrollment.save($scope.enrollment, function(data) {
       $scope.enrollments.push(data);
+    }, function(error) {
+      _.each(error.data.errors, function(e) {
+        noty({text: e, theme: 'relax', layout: 'topCenter', type: 'error', timeout: 3000});
+      });
     });
   }
 
