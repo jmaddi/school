@@ -22,7 +22,7 @@ body {
 }
 
 .well {
-  background-color:#f0f0f0;
+  background-color:#f3f3f3;
   padding:20px;
 }
 
@@ -77,4 +77,25 @@ input[type="number"] {
 }
 .fade.ng-leave-active {
     opacity: 0;
+}
+
+.nav-item {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.nav-item.active {
+  border-left: 1px solid lightGray;
+  border-bottom: 1px solid lightGray;
+  border-top: 1px solid lightGray;
+  box-shadow: -3px 3px 3px #f0f0f0;
+  font-weight: bold;
+}
+
+.nav-item a {
+  text-decoration:none;
+}
+
+.nav-item.active a {
+  font-weight:bold;  
 }

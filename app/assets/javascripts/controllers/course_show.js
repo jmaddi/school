@@ -1,5 +1,7 @@
 angular.module('enrollmentApp').controller('Course.show', function($scope, Student, Course, Enrollment, $routeParams, $window) {
 
+  $scope.setCurrentController('course');
+
   $scope.enrollment = { course_id: $routeParams.id };
 
   $scope.loadStudents = function() {

@@ -1,9 +1,9 @@
-<div class="container" ng-app="enrollmentApp">
+<div class="container" ng-app="enrollmentApp" ng-controller="Enrollment">
   <div class="row">
     <div class="two columns">
       <img src="/assets/logo.png" class="u-full-width" />
-      <a href="/courses">Courses</a><br />
-      <a href="/students">Students</a>
+      <div class="nav-item" ng-class="{active: isCurrentController('course')}"><a href="/courses">Courses</a></div>
+      <div class="nav-item" ng-class="{active: isCurrentController('student')}"><a href="/students">Students</a></div>
     </div>
     <div class="ten columns" style="position:relative">
       <div class="fade" ng-view></div>

@@ -1,5 +1,7 @@
 angular.module('enrollmentApp').controller('Student.index', function($scope, Student, Course, Enrollment, $window) {
 
+  $scope.setCurrentController('student');
+
   $scope.loadStudents = function() {
     Student.query(function(data) {
       $scope.students = data;
