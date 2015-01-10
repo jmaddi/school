@@ -2,9 +2,14 @@
 
 === Demo
 
-http://theenrollment.herokuapp.com/
+http://theenrollment.herokuapp.com
 
 === Tests
 
-rake spec to run API tests
-rake jasmine to run Angular tests
+  rake spec
+
+to run API tests
+
+  rake jasmine
+
+to run Angular tests
